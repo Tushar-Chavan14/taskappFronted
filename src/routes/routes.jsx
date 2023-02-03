@@ -5,6 +5,7 @@ import Tasks from "../components/pages/Tasks";
 import Authprovider from "../context/Authprovider";
 import Protected from "./ProtectedRoute";
 import ProtecForAuthen from "./ProtecForAuthen";
+import Profile from "../components/pages/Profile";
 
 const RoutePaths = () => {
   return (
@@ -34,6 +35,15 @@ const RoutePaths = () => {
           element={
             <Protected>
               <Tasks />
+            </Protected>
+          }
+        />
+
+        <Route
+          path="/profile"
+          element={
+            <Protected>
+              <Profile />
             </Protected>
           }
         />

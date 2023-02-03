@@ -1,12 +1,13 @@
 import axios from "axios";
 import { useState } from "react";
+import { toast } from "react-toastify";
 import authHeaders from "../utils/Authheader";
 
 const useFetchWIthAuth = () => {
   const [data, setdata] = useState();
   const [isLoading, setisLoading] = useState(false);
 
-  const request = async (reqUrl, reqType, reqData) => {
+  const request = async (reqUrl, reqType, reqData = {}, successMsg) => {
     try {
       setisLoading(true);
       const res = await axios({
@@ -16,10 +17,11 @@ const useFetchWIthAuth = () => {
         headers: authHeaders(),
       });
       setdata(res.data);
+      toast.success(successMsg);
       setisLoading(false);
     } catch (e) {
       setisLoading(false);
-      setdata({ error: e.response.data.error });
+      toast.error(e.response.data.error);
     }
   };
 

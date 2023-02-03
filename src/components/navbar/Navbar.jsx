@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 import { Authcontext } from "../../context/Authprovider";
 
 const Navbar = () => {
@@ -6,9 +7,13 @@ const Navbar = () => {
 
   return (
     <nav className=" bg-blueGrey h-16 flex items-center px-16 justify-between">
-      <div className=" text-2xl">Task App</div>
+      <Link to={"/"}>
+        <span className=" text-2xl">Task App</span>
+      </Link>
       <div className="flex items-center gap-8">
-        <div className=" text-xl">profile</div>
+        <Link to={"/profile"}>
+          <span className="text-xl">profile</span>
+        </Link>
         <div>
           <button
             className="p-1 bg-redDark hover:bg-redLight rounded-md active:translate-y-[0.15rem] shadow-md"
