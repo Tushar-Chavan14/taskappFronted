@@ -2,16 +2,24 @@ import { Navigate, Routes, Route } from "react-router-dom";
 import Login from "../components/pages/login";
 import Registration from "../components/pages/Registration";
 import Tasks from "../components/pages/Tasks";
-import Authprovider from "../context/Authprovider";
+import Authprovider, { Authcontext } from "../context/Authprovider";
 import Protected from "./ProtectedRoute";
 import ProtecForAuthen from "./ProtecForAuthen";
 import Profile from "../components/pages/Profile";
+import { useContext } from "react";
 
 const RoutePaths = () => {
+  const { auth } = useContext(Authcontext);
+
   return (
     <Authprovider>
       <Routes>
-        <Route path="/" element={<Navigate to="/login" />} />
+        <Route
+          path="/"
+          element={
+            auth ? <Navigate to={"/tasks"} /> : <Navigate to={"/login"} />
+          }
+        />
 
         <Route
           path="/login"

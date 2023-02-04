@@ -8,8 +8,8 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        bgLog: "url('./src/assets/logbg.svg')",
-        bgReg: "url('./src/assets/regbg.svg')",
+        bgLog: "url('/logbg.svg')",
+        bgReg: "url('/regbg.svg')",
       },
       colors: {
         redLight: "#FF8787",
