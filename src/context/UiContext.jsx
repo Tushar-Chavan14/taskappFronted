@@ -1,9 +1,29 @@
-import React, { createContext, useContext } from "react";
+import React, { createContext, useState } from "react";
 
-const UiContext = createContext({});
+export const UiContext = createContext({});
 
 const UiContextProvider = ({ children }) => {
-  return <UiContext.Provider>{children}</UiContext.Provider>;
+  const [update, setupdate] = useState(false);
+  const [id, setid] = useState("");
+  const [Udescription, setUdescription] = useState("");
+  const [TaskChange, setTaskChange] = useState(false);
+
+  return (
+    <UiContext.Provider
+      value={{
+        update,
+        setupdate,
+        id,
+        setid,
+        TaskChange,
+        setTaskChange,
+        Udescription,
+        setUdescription,
+      }}
+    >
+      {children}
+    </UiContext.Provider>
+  );
 };
 
 export default UiContextProvider;

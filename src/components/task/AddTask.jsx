@@ -1,17 +1,19 @@
-import React, { useState } from "react";
-import { toast } from "react-toastify";
+import React, { useContext, useState } from "react";
+import { UiContext } from "../../context/UiContext";
 import useFetchWIthAuth from "../../hooks/useFetchWithAuth";
 
 const AddTask = () => {
   const [description, setdescription] = useState("");
+  const { setTaskChange } = useContext(UiContext);
 
-  const { request, data, isLoading } = useFetchWIthAuth();
+  const { request, isLoading } = useFetchWIthAuth();
 
   const submitHandler = async (e) => {
     e.preventDefault();
     const reqData = { description };
     await request("/tasks", "post", reqData, "task added");
     setdescription("");
+    setTaskChange((prev) => !prev);
   };
 
   return (
